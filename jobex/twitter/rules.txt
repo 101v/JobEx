@@ -1,0 +1,8 @@
+# This file is used to define filter rules for twitter filtered stream api
+# use first charactr of line as # to comment the line
+
+# (job OR opening OR hiring OR recruitment OR recruiting OR looking for OR #job OR #jobs OR #recruitment) -is:retweet
+
+(job OR opening OR hiring OR recruitment OR "looking for") (engineer OR developer OR manager OR tester OR devops) lang:en -is:retweet
+(job OR opening OR hiring OR recruitment OR "looking for") (software OR hardware OR devops OR "project management" OR java OR python OR linux OR aws OR azure) lang:en -is:retweet
+(job OR opening OR hiring OR recruitment OR "looking for") ("data science" OR datascience OR "data engineer" OR dataengineer OR ai OR cloud OR ML OR "machine learning" OR machinelearning OR "big data" OR bigdata) lang:en -is:retweet
