@@ -44,11 +44,12 @@ tech_keywords_candidates = [
     'api', 'state management', 'sdlc',
     'wire frame', 'ui prototype', 'ux writing', 'interactive design',
     'metric', 'analytic', 'ux research', 'empathy', 'mockup', 
-    'prototype', 'test', 'ideate', 'usability', 'high-fidelity design',
+    'prototype', 'ideate', 'usability', 'high-fidelity design',
     'framework',
     'swift', 'xcode', 'spatial reasoning', 'human interface', 'core data',
     'grand central', 'network', 'objective-c', 'foundation', 'uikit', 
     'cocoatouch', 'spritekit', 'scenekit', 'opengl', 'metal', 'api', 'iot',
     'karma', 'tcp', 'udp', 'stream processing',
-    'airflow', 'hadoop', 'mongodb', 'cassandra', 'rest', 'rest services', 'restful', 'graphql'
+    'airflow', 'hadoop', 'mongodb', 'cassandra', 'rest', 'rest services', 'restful', 'graphql',
+    'spring', 'react native', 'flutter', 'qa', 'quality assurance', 'docker', 'kubernetes', 'type script', 'typescript'
 ]

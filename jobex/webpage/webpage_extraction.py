@@ -51,6 +51,14 @@ class WebPage:
             if block_text.length > 0:           
                 self.text_blocks.append(block_text)
 
+        tds = self.soup.find_all('td')
+        for td in tds:
+            block_text = TextBlock(td)
+            block_text.append_text(td.get_text())
+            
+            if block_text.length > 0:           
+                self.text_blocks.append(block_text)
+
         self.calculate_relative_length()
 
     def calculate_relative_length(self):
