@@ -9,18 +9,19 @@ logger = logging.getLogger(__name__)
 
 def insert_tweet(tweet : Tweet, is_job_tweet : bool, result : TweetAnalysisResult):
     keywords = ",".join(result.tech_keywords) if len(result.tech_keywords) > 0 else ""
-    url1 = tweet.urls[0].url if len(tweet.urls) > 0 else ""
-    url2 = tweet.urls[1].url if len(tweet.urls) > 1 else ""
-    url3 = tweet.urls[2].url if len(tweet.urls) > 2 else ""
-    url4 = tweet.urls[3].url if len(tweet.urls) > 3 else ""
-    url5 = tweet.urls[4].url if len(tweet.urls) > 4 else ""
+    url = ""
+    if len(tweet.urls) > 0:
+        if tweet.urls[0].expanded_url and len(tweet.urls[0].expanded_url.strip()) > 0:
+            url = tweet.urls[0].expanded_url
+        else:
+            url = tweet.urls[0].url
     id = str(uuid.uuid4())
     query = f'''INSERT INTO public.lt_jobtweet
                 (id, tweet_id, value, "text", author_id, createddatetimeutc, isjobtweet, keywords, url1, url2, url3, url4, url5)
                 VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             '''
     con = create_connection("twitterjobdb", "postgres", "postgres", "localhost", "5432")
-    execute_query(con, query, (id, tweet.tweet_id, tweet.payload, tweet.text, tweet.author_id, tweet.created_at, is_job_tweet, keywords, url1, url2, url3, url4, url5))
+    execute_query(con, query, (id, tweet.tweet_id, tweet.payload, tweet.text, tweet.author_id, tweet.created_at, is_job_tweet, keywords, url, "", "", "", ""))
     return id
 
 def insert_page(page_content, keywords, url, tweet_source_id, error_text):

@@ -24,7 +24,12 @@ def on_meg(data):
         is_job_tweet = tweet_analysis.is_tech_job_tweet(result)
         id = dbhelper.insert_tweet(tweet, is_job_tweet, result)
         if len(tweet.urls) > 0 and is_job_tweet:
-            webpage_extraction.analyze_webpage(tweet.urls[0].url, id)
+            url = ""
+            if tweet.urls[0].expanded_url and len(tweet.urls[0].expanded_url.strip()) > 0:
+                url = tweet.urls[0].expanded_url
+            else:
+                url = tweet.urls[0].url
+            webpage_extraction.analyze_webpage(url, id)
 
 
 # Prepare Kafka consumer
