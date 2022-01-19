@@ -31,31 +31,6 @@ def on_data(data):
     print("=================================================")
     print("")
 
-# callback to call on receiving message from Kafka consumer
-def on_meg(data):
-    msg = data.value()
-    if msg:
-        msg = msg.decode("utf-8")
-        tweet = Tweet(msg)
-        result = tweet_analysis.analyze_tweet(tweet)
-        is_job_tweet = tweet_analysis.is_tech_job_tweet(result)
-        id = dbhelper.insert_tweet(tweet, is_job_tweet, result)
-        if len(tweet.urls) > 0 and is_job_tweet:
-            webpage_extraction.analyze_webpage(tweet.urls[0].url, id)
-
-
-# Prepare Kafka consumer
-# TODO: Pending to create new consumer on kafka error
-logger.info("Kafka consumer init started")
-kafka_consumer = KafkaConsumer(
-    kafka_config.server_endpoint,
-    "job-tweet-group",
-    "jobex-twitter-job-tweets-v1",
-    on_meg
-)
-kafka_consumer.init_consumer()
-logger.info("Kafka consumer init completed")
-
 # Check filter rules and update them if required
 rules.commit_filter_rules_if_required()
 
@@ -63,11 +38,6 @@ rules.commit_filter_rules_if_required()
 streamer_thrd = threading.Thread(target=streamer.start, args=(on_data, ))
 streamer_thrd.start()
 logger.info("streamer thread started")
-
-# Start kafka consumer on new thread
-consumer_thrd = threading.Thread(target=kafka_consumer.start)
-consumer_thrd.start()
-logger.info("kafka consumer thread started")
 
 choice = ''
 while choice != 'q' and choice != 'Q':
@@ -79,8 +49,4 @@ streamer_thrd.join()
 logger.info("Streamer stopped")
 kafka_producer.complete()
 logger.info("kafka producer completed")
-kafka_consumer.stop()
-consumer_thrd.join()
-logger.info("kafka consumer stopped")
-
 logger.info("Termination completed")

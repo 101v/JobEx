@@ -24,11 +24,11 @@ hiring_hashtag_candidates = [
 
 # all items should be in lower case
 tech_keywords_candidates = [
-    'c++', 'c#', 'python', 'java', 'rust', 'f#', 'scala', 'elixir', 'erlang', 'php', 'xamrin', 'ruby', 'dotnet' #'c', 'r', '.net'
-    'sql', 'tsql', 'nosql', 'hadoop', 'big data', 'data pipeline', 'database',
+    'c++', 'c#', 'python', 'java', 'rust', 'f#', 'scala', 'elixir', 'erlang', 'php', 'xamrin', 'ruby', 'dotnet', 'c', 'r', '.net', 'golang', 'go lang',
+    'sql', 'tsql', 'nosql', 'hadoop', 'big data', 'data pipeline', 'database', 'mysql', 'olap', 'etl', 'data pipeline', 'oracledb', 'oracle'
     'spark', 'spark streaming', 'kafka', 'apache', 'tomcat',
     'sas', 'tableau',
-    'aws', 'azure', 'gcp', 'google cloud', 'oracle cloud',
+    'aws', 'azure', 'gcp', 'google cloud', 'oracle cloud', 'cloud', 'cloud computing',
     'hive', 'matlab', 'tensorflow',
     'linux', 'windows', 'android', 'macos',
     'scikit', 'machine learning', 'ml', 'ai', 'artificial intelligence', 'statistic', 'deep learning',
@@ -36,7 +36,7 @@ tech_keywords_candidates = [
     'oop', 'object oriented programming', 'functional programming', 'blockchain', 'cryptography', 'web3',
     'html', 'html5', 'css', 'javascript', 'jquery', 'angular', 'angular js', 'react', 'react js', 'vu', 'vu js', 'node',
     'node js', 'web development', 'frontend', 'front end', 'front-end', 'backend', 'back end', 'back-end', 'fullstack', 'full stack', 'full-stack', 'json', 'express', 'redux', 'ajax',
-    'asp', 'asp.net', 'mvc', 
+    'asp', 'asp.net', 'mvc', 'razor'
     'git', 'svn', 'tfs', 'photoshop', 'illustrator',
     'word press', 'seo', 'responsive design', 'mobile development',
     'design pattern',
@@ -49,5 +49,6 @@ tech_keywords_candidates = [
     'swift', 'xcode', 'spatial reasoning', 'human interface', 'core data',
     'grand central', 'network', 'objective-c', 'foundation', 'uikit', 
     'cocoatouch', 'spritekit', 'scenekit', 'opengl', 'metal', 'api', 'iot',
-    'karma', 'tcp', 'udp', 'stream processing'
+    'karma', 'tcp', 'udp', 'stream processing',
+    'airflow', 'hadoop', 'mongodb', 'cassandra', 'rest', 'rest services', 'restful', 'graphql'
 ]
