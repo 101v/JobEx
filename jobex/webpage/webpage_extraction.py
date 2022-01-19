@@ -76,10 +76,12 @@ class WebPage:
         
         self.tech_keywords = list(set(tech_keywords))
     
-
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
+}
 
 def get_webpage_soup(url: str) -> WebPage:
-    r = requests.get(url)
+    r = requests.get(url, headers=headers)
     c = r.content
     soup = BeautifulSoup(c, "html.parser")
     return WebPage(url, soup)
